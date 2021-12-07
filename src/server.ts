@@ -1,7 +1,6 @@
 const express = require("express");
 // const bodyParser = require("body-parser");
-const route = require("./routes/tutorials.routes.ts");
-
+const userRoute = require("./routes/user.routes.ts");
 const cors = require("cors");
 
 const app = express();
@@ -15,7 +14,7 @@ app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
 //router is connectionConfig
-app.use("/api/tutorials", route);
+app.use("/api/user", userRoute);
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(
   express.urlencoded({ extended: true })

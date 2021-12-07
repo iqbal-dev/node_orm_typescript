@@ -26,6 +26,10 @@ const database: any = {};
 database.Sequelize = Sequelize;
 database.sequelize = sequelize;
 
-database.tutorials = require("./tutorial.model.ts")(sequelize, Sequelize);
+database.users = require("./user.module.ts")(sequelize, Sequelize);
+database.loggedInUser = require("./loggedinUser.model.ts")(
+  sequelize,
+  Sequelize
+);
 
 module.exports = database;
