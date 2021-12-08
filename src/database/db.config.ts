@@ -2,7 +2,7 @@ module.exports = {
   HOST: "localhost",
   USER: "testuser",
   PASSWORD: "12345678",
-  DB: "iqbaldb",
+  DB: "IPAGETEST",
   dialect: "mssql",
   pool: {
     max: 5,
