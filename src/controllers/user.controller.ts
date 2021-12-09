@@ -48,7 +48,8 @@ exports.singIn = async (req: any, res: any) => {
 
   
   try {
-    const existingUser = await User.findOne({where: { email: email}});
+    const existingUser = await User.findOne({ where: { email: email } });
+    
 //check  existing user
     if (!existingUser)
       return res.status(404).json({ message: "User doesn't exist" });
@@ -67,7 +68,6 @@ exports.singIn = async (req: any, res: any) => {
     );
     //create log history for user
     await LoggedInUser.create({ email, loginTime: loginTime });
-    console.log('user created');
     
     res.status(200).json({ token });
   } catch (error) {
@@ -84,3 +84,20 @@ exports.loggedInUser = async (req: any, res: any) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+//Search for users
+
+exports.userSearch = async (req: any, res: any) => {
+  const {name} = req.query;
+  console.log(name);
+  
+
+  try {
+    const data = await User.findAll({ where: { name: { [op.like]: `%${name}%` } } });
+    if(!data.length) return res.status(404).json({ message:'user not found'})
+    res.status(200).json(data);
+
+  } catch (error:any) {
+    res.status(500).json(error.message);
+  }
+}

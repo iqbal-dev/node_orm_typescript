@@ -1,16 +1,14 @@
-module.exports = (sequelize: any, Sequelize: any) => {
+//user table model
+module.exports = (sequelize: any, DataType: any) => {
   const User = sequelize.define("LogUser", {
     name: {
-      type: Sequelize.STRING,
+      type: DataType.STRING,
     },
     email: {
-      type: Sequelize.STRING,
+      type: DataType.STRING,
     },
     password: {
-      type: Sequelize.STRING,
-    },
-    confirmPassword: {
-      type: Sequelize.STRING,
+      type: DataType.STRING,
     },
   });
   return User;
